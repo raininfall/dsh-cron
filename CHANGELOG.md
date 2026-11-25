@@ -1,3 +1,7 @@
+## 0.3.53 (2026-11-25)
+
+- fix(server): read the DSH `connection` service through Cordis's unchecked accessor (`ctx.get('connection')`) before falling back to the property proxy; the proxy throws for a service the plugin does not inject, so every non-loopback request (for example a Web UI bound to a LAN address) failed closed with `403 Forbidden: untrusted or cross-origin request` on all `/dsh-cron/*` routes (GH #13, #366)
+
 ## 0.3.52 (2026-11-19)
 
 - fix(client): the `shell.overlay` path now counts as active only after its root actually has layout (`getBoundingClientRect()`); a slot that mounts but paints nothing keeps the conversation-column mount in charge, so a broken overlay can no longer produce a blank panel (GH #29, #467)
